@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/469cd9f0-9d17-41a9-be2f-00b9bdd858ce/microsoft.web/sites/subscriptions/469cd9f0-9d17-41a9-be2f-00b9bdd858ce/resourceGroups/rg-udtechconf/providers/Microsoft.Web/sites/webapp-udtechconf",
+    "appService.deploySubpath": "."
+}
