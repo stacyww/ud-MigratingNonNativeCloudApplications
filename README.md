@@ -59,13 +59,19 @@ You will need to install the following locally:
 2. Re-deploy the web app to publish changes
 
 ## Monthly Cost Analysis
-Complete a month cost analysis of each Azure resource to give an estimate total cost using the table below:
+A month cost analysis of each Azure resource to give an estimate total cost using the table below:
 
 | Azure Resource | Service Tier | Monthly Cost |
 | ------------ | ------------ | ------------ |
-| *Azure Postgres Database* |     |              |
-| *Azure Service Bus*   |         |              |
-| ...                   |         |              |
+| *Azure Postgres Database* |   Burstable, B1ms, 1 vCores, 2 GiB RAM, 32 GiB storage   |    USD 20.54/month          |
+| *Azure Service Bus*   |  Basic       |        USD 0.05/month      |
+| *Azure Function* |       Consumption (First 1 mil executions)  |       Free       |
+| *Azure Storage* |      Storage (general purpose v1) |       USD 24.01/month       |
+| *Azure App Service* |     Basic |       USD 13.14/month       |
+| *Total* |  -  |       USD 57.74/month       |
 
 ## Architecture Explanation
-This is a placeholder section where you can provide an explanation and reasoning for your architecture selection for both the Azure Web App and Azure Function.
+The current architecture was selected to address the following pain points:
+- **The web app was not scalabale** - In order to address this, the application was added to an Azure App Service to allow for scaling horizontally (number of VMs) or vertically (more compute power)
+- **HTTP timeouts for notification messages** - The application previously processed the sending of emails to each of the recepients in a process set up in the web app, which caused timeouts due to having to loop through all attendees. The solution here was to batch off the process of sending notification emails to a background job by utilising a service bus queue that implements an Azure function. Thus alleviating the strain on the web app when multiple requests need to be handled.
+- **Cost** - The service is now configured to be more cost effective as Azure now handles the scaling of resources depending on the dedmand/requests to the website. Therefore, the full application is only billed for resources utilised as opposed to previously having to procure capital expensive resources that could handle the maximum estimated requests regardless whether the demand is met or not.
