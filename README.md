@@ -63,7 +63,7 @@ A month cost analysis of each Azure resource to give an estimate total cost usin
 
 | Azure Resource | Service Tier | Monthly Cost |
 | ------------ | ------------ | ------------ |
-| *Azure Postgres Database* |   BGeneral Purpose, D2s_v3, 2 vCores, 8 GiB RAM, 32 GiB storage   |    USD 128.83/month          |
+| *Azure Postgres Database* |   General Purpose, D2s_v3, 2 vCores, 8 GiB RAM, 32 GiB storage   |    USD 128.83/month          |
 | *Azure Service Bus*   |  Standard       |        USD 10.00/month      |
 | *Azure Function* |       Consumption (First 1 mil executions)  |       Free       |
 | *Azure Storage* |      Storage (general purpose v2) |       USD 26.80/month       |
